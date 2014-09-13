@@ -134,7 +134,7 @@
             input.addEventListener("keyup", function (e) {
                 //if (e.keyCode === 13) {
                 $scope.isMember();
-		$scope.hasinput = true;
+                $scope.hasinput = true;
                 //}
             });
         });
