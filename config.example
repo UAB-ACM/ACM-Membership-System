@@ -1,0 +1,4 @@
+{
+    "server": "SERVER_NAME",
+    "port": PORT_NUMBER
+}

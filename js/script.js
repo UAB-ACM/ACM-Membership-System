@@ -50,8 +50,17 @@
 
     acmApp.controller('loginCtrl', function ($scope, $http, $rootScope, $location) {
 
+
+        $http.get('./config.json').
+        success(function (data, status, headers, config) {
+            $rootScope.baseURL = data.server + ':' + data.port;
+        }).
+        error(function (data, status, headers, config) {
+            console.log('There was an error connecting to the server');
+        });
+
         $scope.login = function () {
-            $http.post('http://bradengroom.com:3000/login', {
+            $http.post($rootScope.baseURL + '/login', {
                 password: $('#password').val()
             }).
             success(function (data, status, headers, config) {
@@ -89,7 +98,7 @@
 
         $scope.changePassword = function () {
             if ($scope.new == $scope.confirm) {
-                $http.post('http://bradengroom.com:3000/change', {
+                $http.post($rootScope.baseURL + '/change', {
                     'old': $scope.old,
                     'new': $scope.new,
                     'key': $rootScope.key
@@ -102,7 +111,7 @@
 
         var members;
 
-        $http.get('http://bradengroom.com:3000/members').
+        $http.get($rootScope.baseURL + '/members').
         success(function (data, status, headers, config) {
             members = data.map(function (item) {
                 return item.blazerid
@@ -118,7 +127,7 @@
 
                 $scope.member;
 
-                $http.get('http://bradengroom.com:3000/members/' + blazerId).
+                $http.get($rootScope.baseURL + '/members/' + blazerId).
                 success(function (data, status, headers, config) {
                     $scope.member = data;
                 });
@@ -146,7 +155,7 @@
             $location.path("/login");
         }
 
-        $http.get('http://bradengroom.com:3000/members').
+        $http.get($rootScope.baseURL + '/members').
         success(function (data, status, headers, config) {
             $scope.members = data;
 
@@ -163,7 +172,7 @@
         var emails;
 
         $scope.getMembers = function () {
-            $http.post('http://bradengroom.com:3000/expired', {
+            $http.post($rootScope.baseURL + '/expired', {
                 renewal: $scope.renewal,
                 key: $rootScope.key
             }).
@@ -176,7 +185,7 @@
         };
 
         $scope.emailMembers = function () {
-            $http.post('http://bradengroom.com:3000/mail', {
+            $http.post($rootScope.baseURL + '/mail', {
                 to: emails,
                 subject: $('#subject').val(),
                 text: $('#text').val(),
@@ -185,13 +194,12 @@
         };
 
         $scope.removeMembers = function () {
-            $http.delete('http://bradengroom.com:3000/expired', {
+            $http.delete($rootScope.baseURL + '/expired', {
                 params: {
                     'renewal': $scope.renewal,
                     'key': $rootScope.key
                 }
             });
-            console.log('called');
         };
     });
 
@@ -207,18 +215,17 @@
 
         $scope.blazer_id = $routeParams.blazerId;
 
-        $http.get('http://bradengroom.com:3000/members/' + $scope.blazer_id, {
+        $http.get($rootScope.baseURL + '/members/' + $scope.blazer_id, {
             params: {
                 'key': $rootScope.key
             }
         }).
         success(function (data, status, headers, config) {
-            console.log(data)
             $scope.member = data;
         });
 
         $scope.removeMember = function () {
-            $http.delete('http://bradengroom.com:3000/members/' + $scope.blazer_id, {
+            $http.delete($rootScope.baseURL + '/members/' + $scope.blazer_id, {
                 params: {
                     'key': $rootScope.key
                 }
@@ -228,11 +235,11 @@
 
         $scope.updateMember = function () {
             $scope.member.key = $rootScope.key;
-            $http.put('http://bradengroom.com:3000/members/' + $scope.member.blazerid, $scope.member);
+            $http.put($rootScope.baseURL + '/members/' + $scope.member.blazerid, $scope.member);
         };
 
         $scope.emailMember = function () {
-            $http.post('http://bradengroom.com:3000/mail', {
+            $http.post($rootScope.baseURL + '/mail', {
                 to: $scope.member.email,
                 subject: $('#subject').val(),
                 text: $('#text').val(),
@@ -249,7 +256,7 @@
         }
 
         $scope.emailMembers = function () {
-            $http.post('http://bradengroom.com:3000/mail/all', {
+            $http.post($rootScope.baseURL + '/mail/all', {
                 subject: $('#subject').val(),
                 text: $('#text').val(),
                 key: $rootScope.key
@@ -267,7 +274,7 @@
         $scope.addMember = function () {
 
             $scope.member.key = $rootScope.key;
-            $http.post('http://bradengroom.com:3000/members', $scope.member);
+            $http.post($rootScope.baseURL + '/members', $scope.member);
             $location.path("/members");
         };
     });
