@@ -1,0 +1,29 @@
+{
+    "name": "acm-member-system",
+    "description": "A system for managing ACM members",
+    "version": "1.0.0",
+    "keywords": [
+        
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/bradengroom/ACM-Membership-System"
+    },
+    "author": {
+        "name": "UAB ACM",
+        "email": "braden93@cis.uab.edu",
+        "url": "http://acm.cis.uab.edu"
+    },
+    "contributors": [
+        {
+            "name": "Braden Groom",
+            "email": "bradengroom@gmail.com"         
+        }
+    ],
+    "dependencies": {
+        "bower": ">=1.3.10"
+    },
+    "devDependencies": {
+        "bower": ">=1.3.10"
+    }
+}
