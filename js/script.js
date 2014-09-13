@@ -4,42 +4,42 @@
     acmApp.config(function ($routeProvider) {
         $routeProvider
             .when('/members', {
-                templateUrl: 'views/members.html',
+                templateUrl: 'partials/members.html',
                 controller: 'membersCtrl',
                 controllerAs: 'membersCtrl'
             })
             .when('/members/:blazerId', {
-                templateUrl: 'views/member-profile.html',
+                templateUrl: 'partials/member-profile.html',
                 controller: 'memberProfileCtrl',
                 controllerAs: 'profileCtrl'
             })
             .when('/add-member', {
-                templateUrl: 'views/add-member.html',
+                templateUrl: 'partials/add-member.html',
                 controller: 'newMemberCtrl',
                 controllerAs: 'newMemberCtrl'
             })
             .when('/renewals', {
-                templateUrl: 'views/renewals.html',
+                templateUrl: 'partials/renewals.html',
                 controller: 'renewalCtrl',
                 controllerAs: 'renewalCtrl'
             })
             .when('/email', {
-                templateUrl: 'views/email.html',
+                templateUrl: 'partials/email.html',
                 controller: 'emailCtrl',
                 controllerAs: 'emailCtrl'
             })
             .when('/login', {
-                templateUrl: 'views/login.html',
+                templateUrl: 'partials/login.html',
                 controller: 'loginCtrl',
                 controllerAs: 'loginCtrl'
             })
             .when('/settings', {
-                templateUrl: 'views/settings.html',
+                templateUrl: 'partials/settings.html',
                 controller: 'settingsCtrl',
                 controllerAs: 'settingsCtrl'
             })
             .when('/am-i-a-member', {
-                templateUrl: 'views/am-i-a-member.html',
+                templateUrl: 'partials/am-i-a-member.html',
                 controller: 'checkCtrl',
                 controllerAs: 'checkCtrl'
             })
