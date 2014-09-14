@@ -1,0 +1,9 @@
+<input ng-model="searchText" class="navbar" placeholder="Search by name or blazer id" style="text-align: center; width: 100%; border-width: 1px; border-color: black;"></input>
+
+<div ng-repeat="member in members | filter:searchText" style="text-align: center">
+    <a ng-href='#members/{{member.blazerid}}'>
+        <h2>
+            {{member.name}} - {{member.blazerid}}
+        </h2>
+    </a>
+</div>

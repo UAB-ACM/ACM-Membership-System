@@ -1,0 +1,43 @@
+<div class="input-group">
+    <input type="text" class="form-control" placeholder="Get members by renewal time. ex: 'Fall 2014', '2014', or 'spring' (this also accepts regex)" ng-model="renewal">
+    <span class="input-group-btn">
+        <button class="btn btn-default" type="button" ng-click="getMembers()">Go!</button>
+      </span>
+</div>
+
+<div ng-repeat="member in members | filter:searchText" style="text-align: center">
+    <a ng-href='#members/{{member.blazerid}}'>
+        <h2>
+            {{member.name}} - {{member.blazerid}}
+        </h2>
+    </a>
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+    <div class="container-fluid" style="text-align: center">
+        <button class="btn btn-success" style="width:49%" data-toggle="modal" data-target="#emailModal">Email All</button>
+        <button class="btn btn-danger" style="width:49%" ng-click="removeMembers()">Remove All</button>
+    </div>
+</nav>
+
+<div class="modal fade" id="emailModal" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Email</h4>
+            </div>
+            <div class="modal-body">
+                <h3>Subject</h3>
+                <input type="text" class="member-attr form-control" id="subject">
+                <h3>Body</h3>
+                <textarea type="text" class="member-attr form-control" id="text"></textarea>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="emailMembers()">Send</button>
+            </div>
+        </div>
+    </div>
+</div>

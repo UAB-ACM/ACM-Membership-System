@@ -1,0 +1,24 @@
+<div style="text-align: center;">
+    <img style="margin-top: 20px" src="http://acm.cis.uab.edu/media/2013/12/blaze_acm-300x300.jpg" />
+    <h1>Are you a member?</h1>
+    <input class="" type="text" id="blazerId" placeholder="Enter your blazer ID">
+
+    <div ng-show="yes">
+        <h1 style='color: green'>Yes</h1>
+
+        <div class="panel panel-default" id="panel">
+            <div class="panel-heading">{{member.name}}</div>
+            <div class="panel-body">
+                <div>Joined: {{member.join}}</div>
+                <div>Renewal Time: {{member.renewal}}</div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-show="!yes && hasinput">
+        <h1>No</h1>
+        <h3>
+            <a href="http://acm.cis.uab.edu/join-acm/">How do I join?</a>
+        </h3>
+    </div>
+</div>
