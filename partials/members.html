@@ -1,11 +1,12 @@
 <input ng-model="searchText" class="navbar search-bar" placeholder="Search by name or blazer id"></input>
 
-<div class="text-center">
-    <div ng-repeat="member in members | filter:searchText">
-        <a ng-href='#members/{{member.blazerid}}'>
-            <h2>
-            {{member.name}} - {{member.blazerid}}
-        </h2>
-        </a>
+<div class="container center-block">
+    <div class="text-center">
+        <div class="row" ng-repeat="member in members | filter:searchText | orderBy:'name'">
+            <a ng-href='#members/{{member.blazerid}}'>
+                <div class="col-xs-offset-3 col-xs-3 h3">{{member.name}}</div>
+                <div class="col-xs-3 h3">{{member.blazerid}}</div>
+            </a>
+        </div>
     </div>
 </div>
