@@ -1,5 +1,5 @@
 {
-    "server": "SERVER_NAME",
+    "server": "SERVER_ADDRESS",
     "port": PORT_NUMBER,
     "clubLogo": "CLUB_IMAGE",
     "joinLink": "LINK_TO_JOIN"
