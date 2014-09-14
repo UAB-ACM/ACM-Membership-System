@@ -1,4 +1,6 @@
 {
     "server": "SERVER_NAME",
-    "port": PORT_NUMBER
+    "port": PORT_NUMBER,
+    "clubLogo": "CLUB_IMAGE",
+    "joinLink": "LINK_TO_JOIN"
 }
