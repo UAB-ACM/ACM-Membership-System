@@ -1,3 +1,4 @@
-bower_components/*
-config.json
+frontend/bower_components/*
+frontend/config.json
+backend/config.json
 node_modules/*

@@ -1,10 +1,7 @@
 {
-    "name": "acm-member-system",
-    "description": "A system for managing ACM members",
+    "name": "acm-server",
+    "description": "ACM Member Management Server",
     "version": "1.0.0",
-    "keywords": [
-        
-    ],
     "repository": {
         "type": "git",
         "url": "https://github.com/bradengroom/ACM-Membership-System"
@@ -17,13 +14,15 @@
     "contributors": [
         {
             "name": "Braden Groom",
-            "email": "bradengroom@gmail.com"         
+            "email": "bradengroom@gmail.com"
         }
     ],
     "dependencies": {
-        "bower": ">=1.3.10"
-    },
-    "devDependencies": {
-        "bower": ">=1.3.10"
+        "express": "3.x",
+        "nodemailer": "latest",
+        "cors": "latest",
+        "bower": ">=1.3.10",
+        "md5": "latest",
+        "mongodb": "latest"
     }
 }
