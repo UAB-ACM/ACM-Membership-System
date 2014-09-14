@@ -3,3 +3,16 @@
 <h3>Body</h3>
 <textarea type="text" class="centered-input form-control" id="text"></textarea>
 <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="emailMembers()">Send</button>
+
+<div class="container navbar-fixed-bottom notification">
+    <div id="error" class="alert alert-danger fade">
+        <button type="button" class="close" data-hide="alert">×</button>
+        <strong>Email failed to send.</strong>
+    </div>
+</div>
+<div class="container navbar-fixed-bottom notification">
+    <div id="success" class="alert alert-success fade">
+        <button type="button" class="close" data-hide="alert">×</button>
+        <strong>Email sent.</strong>
+    </div>
+</div>

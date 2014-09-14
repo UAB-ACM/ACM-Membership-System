@@ -42,9 +42,9 @@ acmApp.controller('memberProfileCtrl', function ($scope, $routeParams, $http, $r
         }).
         success(function (data, status, headers, config) {
             if (data.error) {
-                $("#error").addClass("in").slideDown(2000);
+                $("#error").slideDown(1000).addClass("in").delay(5000).slideUp(5000);
             } else {
-                $("#success").addClass("in");
+                $("#success").slideDown(1000).addClass("in").delay(5000).slideUp(5000);
             }
         });
     };

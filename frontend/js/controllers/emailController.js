@@ -9,6 +9,13 @@ acmApp.controller('emailCtrl', function ($scope, $routeParams, $http, $rootScope
             subject: $('#subject').val(),
             text: $('#text').val(),
             key: $rootScope.key
+        }).
+        success(function (data, status, headers, config) {
+            if (data.error) {
+                $("#error").slideDown(1000).addClass("in").delay(5000).slideUp(5000);
+            } else {
+                $("#success").slideDown(1000).addClass("in").delay(5000).slideUp(5000);
+            }
         });
     };
 

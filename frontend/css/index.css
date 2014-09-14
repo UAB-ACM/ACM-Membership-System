@@ -2,21 +2,23 @@ body {
     padding-top: 50px;
     padding-bottom: 50px;
 }
-
 .logo {
     margin-top: 20px;
 }
-
 .centered-input {
     max-width: 500px;
     width: 50%;
     display: block;
     margin: auto;
 }
-
 .search-bar {
     text-align: center;
     width: 100%;
     border-width: 1px;
     border-color: black;
+}
+.notification {
+    z-index: +1;
+    position: absolute;
+    width: 100%;
 }
