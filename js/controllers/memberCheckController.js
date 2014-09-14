@@ -1,13 +1,21 @@
 acmApp.controller('checkCtrl', function ($scope, $http, $rootScope, $location) {
 
-    var members;
+    if (typeof $rootScope.baseURL == 'undefined' || typeof $rootScope.logo == 'undefined') {
+        $http.get('./config.json')
+            .success(function (data, status, headers, config) {
+                $rootScope.baseURL = data.server + ':' + data.port;
+                $rootScope.logo = data.logo;
 
-    $http.get($rootScope.baseURL + '/members').
-    success(function (data, status, headers, config) {
-        members = data.map(function (item) {
-            return item.blazerid
-        });
-    });
+                $http.get($rootScope.baseURL + '/members').success(function (data, status, headers, config) {
+                    members = data.map(function (item) {
+                        return item.blazerid
+                    });
+                });
+            })
+            .error(function (data, status, headers, config) {
+                console.log('There was an error connecting to the server');
+            });
+    }
 
     $scope.isMember = function () {
         var blazerId = document.getElementById('blazerId').value;
@@ -32,10 +40,8 @@ acmApp.controller('checkCtrl', function ($scope, $http, $rootScope, $location) {
     $(document).ready(function () {
         var input = document.getElementById("blazerId");
         input.addEventListener("keyup", function (e) {
-            //if (e.keyCode === 13) {
             $scope.isMember();
             $scope.hasinput = true;
-            //}
         });
     });
 });
