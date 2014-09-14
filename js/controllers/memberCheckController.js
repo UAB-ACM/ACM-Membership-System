@@ -1,10 +1,11 @@
 acmApp.controller('checkCtrl', function ($scope, $http, $rootScope, $location) {
 
-    if (typeof $rootScope.baseURL == 'undefined' || typeof $rootScope.logo == 'undefined') {
+    if (typeof $rootScope.baseURL == 'undefined' || typeof $rootScope.logo == 'undefined' || typeof $rootScope.join == 'undefined') {
         $http.get('./config.json')
             .success(function (data, status, headers, config) {
                 $rootScope.baseURL = data.server + ':' + data.port;
-                $rootScope.logo = data.logo;
+                $rootScope.logo = data.clubLogo;
+                $rootScope.join = data.joinLink;
 
                 $http.get($rootScope.baseURL + '/members').success(function (data, status, headers, config) {
                     members = data.map(function (item) {

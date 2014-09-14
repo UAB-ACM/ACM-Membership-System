@@ -1,7 +1,7 @@
-<div style="text-align: center;">
-    <img style="margin-top: 20px" ng-src="{{logo}}" />
+<div class="text-center">
+    <img class="logo" ng-src="{{logo}}" />
     <h1>Are you a member?</h1>
-    <input class="" type="text" id="blazerId" placeholder="Enter your blazer ID">
+    <input class="centered-input form-control" type="text" id="blazerId" placeholder="Enter your blazer ID">
 
     <div ng-show="yes">
         <h1 style='color: green'>Yes</h1>
@@ -18,7 +18,7 @@
     <div ng-show="!yes && hasinput">
         <h1>No</h1>
         <h3>
-            <a href="http://acm.cis.uab.edu/join-acm/">How do I join?</a>
+            <a ng-href="{{join}}">How do I join?</a>
         </h3>
     </div>
 </div>

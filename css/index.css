@@ -3,6 +3,20 @@ body {
     padding-bottom: 50px;
 }
 
-.nav li {
-    display:table-cell !important;
+.logo {
+    margin-top: 20px;
+}
+
+.centered-input {
+    max-width: 500px;
+    width: 50%;
+    display: block;
+    margin: auto;
+}
+
+.search-bar {
+    text-align: center;
+    width: 100%;
+    border-width: 1px;
+    border-color: black;
 }

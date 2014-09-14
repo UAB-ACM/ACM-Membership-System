@@ -5,7 +5,7 @@ acmApp.controller('loginCtrl', function ($scope, $http, $rootScope, $location) {
     $http.get('./config.json').
     success(function (data, status, headers, config) {
         $rootScope.baseURL = data.server + ':' + data.port;
-        $rootScope.logo = data.logo;
+        $rootScope.logo = data.clubLogo;
     }).
     error(function (data, status, headers, config) {
         console.log('There was an error connecting to the server');
@@ -24,6 +24,8 @@ acmApp.controller('loginCtrl', function ($scope, $http, $rootScope, $location) {
                 shakeForm();
             } else if (data != '' && typeof data != 'undefined') {
                 $rootScope.key = data;
+                //use this eventually
+                //localStorage.setItem('session', data);
                 $location.path("/members");
             }
         }).

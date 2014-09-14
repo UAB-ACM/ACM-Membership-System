@@ -5,18 +5,20 @@
       </span>
 </div>
 
-<div ng-repeat="member in members | filter:searchText" style="text-align: center">
-    <a ng-href='#members/{{member.blazerid}}'>
-        <h2>
+<div class="text-center">
+    <div ng-repeat="member in members | filter:searchText">
+        <a ng-href='#members/{{member.blazerid}}'>
+            <h2>
             {{member.name}} - {{member.blazerid}}
         </h2>
-    </a>
+        </a>
+    </div>
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
-    <div class="container-fluid" style="text-align: center">
-        <button class="btn btn-success" style="width:49%" data-toggle="modal" data-target="#emailModal">Email All</button>
-        <button class="btn btn-danger" style="width:49%" ng-click="removeMembers()">Remove All</button>
+    <div class="container-fluid" class="text-center">
+        <button class="btn btn-success col-sm-6" data-toggle="modal" data-target="#emailModal">Email All</button>
+        <button class="btn btn-danger col-sm-6" ng-click="removeMembers()">Remove All</button>
     </div>
 </nav>
 
@@ -30,9 +32,9 @@
             </div>
             <div class="modal-body">
                 <h3>Subject</h3>
-                <input type="text" class="member-attr form-control" id="subject">
+                <input type="text" class="centered-input form-control" id="subject">
                 <h3>Body</h3>
-                <textarea type="text" class="member-attr form-control" id="text"></textarea>
+                <textarea type="text" class="centered-input form-control" id="text"></textarea>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
