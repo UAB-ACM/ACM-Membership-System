@@ -6,9 +6,9 @@ module.exports = function (app, db, config) {
 
         if (req.query.key) {
             if (blazerid == '' || typeof blazerid == 'undefined') {
-
-                res.send("Please supply a blazerid.");
-
+                res.send({
+                    error: "Please supply a blazerid."
+                });
             } else {
 
                 app.checkKey(req.query.key, res, function () {

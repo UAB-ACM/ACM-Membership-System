@@ -1,5 +1,5 @@
 module.exports = function (app, db, config) {
-    
+
     var nodemailer = require('nodemailer');
 
     var transporter = nodemailer.createTransport({
@@ -22,9 +22,13 @@ module.exports = function (app, db, config) {
         app.checkKey(req.body.key, res, function () {
             transporter.sendMail(mailOptions, function (error, info) {
                 if (error) {
-                    console.log(error);
+                    res.send({
+                        'error': error
+                    });
                 } else {
-                    console.log('Message sent: ' + info.response);
+                    res.send({
+                        'success': info
+                    });
                 }
             });
         });
@@ -46,15 +50,17 @@ module.exports = function (app, db, config) {
 
                     transporter.sendMail(mailOptions, function (error, info) {
                         if (error) {
-                            console.log(error);
+                            res.send({
+                                'error': error
+                            });
                         } else {
-                            console.log('Message sent: ' + info.response);
+                            res.send({
+                                'success': info
+                            });
                         }
                     });
                 });
             });
         });
-
     });
-
 }

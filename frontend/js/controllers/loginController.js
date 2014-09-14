@@ -1,17 +1,17 @@
 acmApp.controller('loginCtrl', function ($scope, $http, $rootScope, $location) {
 
 
-    if (typeof $rootScope.baseURL == 'undefined' || typeof $rootScope.logo == 'undefined')
-    $http.get('./config.json').
-    success(function (data, status, headers, config) {
-        $rootScope.baseURL = data.server + ':' + data.port;
-        $rootScope.logo = data.clubLogo;
-    }).
-    error(function (data, status, headers, config) {
-        console.log('There was an error connecting to the server');
-    });
+    if (typeof $rootScope.baseURL == 'undefined' || typeof $rootScope.logo == 'undefined') {
+        $http.get('./config.json').
+        success(function (data, status, headers, config) {
+            $rootScope.baseURL = data.server + ':' + data.port;
+            $rootScope.logo = data.clubLogo;
+        }).
+        error(function (data, status, headers, config) {
+            console.log('There was an error connecting to the server');
+        });
+    }
 
-    
     $scope.login = function () {
         $http.post($rootScope.baseURL + '/login', {
             password: $('#password').val()

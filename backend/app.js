@@ -1,7 +1,8 @@
 var express = require('express'),
-    cors = require('cors');
-
-var app = express();
+    cors = require('cors'),
+    config = require('./config.json'),
+    app = express(),
+    mongo = require('mongodb');
 
 app.use(cors());
 
@@ -10,17 +11,15 @@ app.configure(function () {
     app.use(express.bodyParser());
 });
 
-var mongo = require('mongodb');
-
 var Server = mongo.Server,
     Db = mongo.Db,
     BSON = mongo.BSONPure;
 
-var server = new Server('localhost', 27017, {
+var mongo_server = new Server(config.mongo_server, config.mongo_port, {
     auto_reconnect: true
 });
 
-db = new Db('members', server);
+db = new Db('members', mongo_server);
 
 db.open(function (err, db) {
     if (!err) {
@@ -34,8 +33,6 @@ db.open(function (err, db) {
         });
     }
 });
-
-var config = require('./config.json');
 
 app.checkKey = function (key, res, callback) {
 
@@ -60,5 +57,5 @@ require('./routes/mail')(app, db, config);
 require('./routes/expired')(app, db, config);
 require('./routes/settings')(app, db, config);
 
-app.listen(3000);
-console.log('Listening on port 3000...');
+app.listen(config.port);
+console.log('Listening on port ' + config.port + '...');

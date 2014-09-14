@@ -1,5 +1,8 @@
 {
     "password": "LOGIN_PASSWORD",
     "email": "GMAIL_USERNAME",
-    "emailpass": "GMAIL_PASSWORD"
+    "emailpass": "GMAIL_PASSWORD",
+    "port": PORT_TO_LISTEN,
+    "mongo_server": "MONGO_SERVER",
+    "mongo_port": MONGO_PORT
 }

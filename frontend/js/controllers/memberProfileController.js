@@ -39,6 +39,13 @@ acmApp.controller('memberProfileCtrl', function ($scope, $routeParams, $http, $r
             subject: $('#subject').val(),
             text: $('#text').val(),
             key: $rootScope.key
+        }).
+        success(function (data, status, headers, config) {
+            if (data.error) {
+                $("#error").addClass("in").slideDown(2000);
+            } else {
+                $("#success").addClass("in");
+            }
         });
     };
 
