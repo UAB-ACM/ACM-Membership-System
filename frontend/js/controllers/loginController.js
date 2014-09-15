@@ -40,4 +40,10 @@ acmApp.controller('loginCtrl', function ($scope, $http, $location, $cookieStore,
                 'margin-left': "+=" + (len = -len) + 'px'
             }, 75);
     }
+
+    $('#password').keypress(function (e) {
+        if (e.which == 13) {
+            $scope.login();
+        }
+    });
 });
