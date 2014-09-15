@@ -1,22 +1,23 @@
-acmApp.controller('checkCtrl', function ($scope, $http, $rootScope, $location) {
+acmApp.controller('checkCtrl', function ($scope, $http, $location, $cookieStore, $rootScope) {
 
-    if (typeof $rootScope.baseURL == 'undefined' || typeof $rootScope.logo == 'undefined' || typeof $rootScope.join == 'undefined') {
-        $http.get('./config.json')
-            .success(function (data, status, headers, config) {
-                $rootScope.baseURL = data.server + ':' + data.port;
-                $rootScope.logo = data.clubLogo;
-                $rootScope.join = data.joinLink;
 
-                $http.get($rootScope.baseURL + '/members').success(function (data, status, headers, config) {
-                    members = data.map(function (item) {
-                        return item.blazerid
-                    });
+    $http.get('./config.json')
+        .success(function (data, status, headers, config) {
+            $cookieStore.put('baseURL', data.server + ':' + data.port);
+            $cookieStore.put('logo', data.clubLogo);
+            $cookieStore.put('join', data.joinLink);
+            $rootScope.logo = $cookieStore.get('logo');
+            $rootScope.join = $cookieStore.get('join');
+
+            $http.get($cookieStore.get('baseURL') + '/members').success(function (data, status, headers, config) {
+                members = data.map(function (item) {
+                    return item.blazerid
                 });
-            })
-            .error(function (data, status, headers, config) {
-                console.log('There was an error connecting to the server');
             });
-    }
+        })
+        .error(function (data, status, headers, config) {
+            console.log('There was an error connecting to the server');
+        });
 
     $scope.isMember = function () {
         var blazerId = document.getElementById('blazerId').value;
@@ -27,7 +28,7 @@ acmApp.controller('checkCtrl', function ($scope, $http, $rootScope, $location) {
 
             $scope.member;
 
-            $http.get($rootScope.baseURL + '/members/' + blazerId).
+            $http.get($cookieStore.get('baseURL') + '/members/' + blazerId).
             success(function (data, status, headers, config) {
                 $scope.member = data;
             });

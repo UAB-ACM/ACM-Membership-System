@@ -1,14 +1,14 @@
-acmApp.controller('emailCtrl', function ($scope, $routeParams, $http, $rootScope, $location) {
+acmApp.controller('emailCtrl', function ($scope, $routeParams, $http, $location, $cookieStore) {
 
-    if ($rootScope.key == '' || typeof $rootScope.key == 'undefined') {
+    if ($cookieStore.get('session') == '' || typeof $cookieStore.get('session') == 'undefined') {
         $location.path("/login");
     }
 
     $scope.emailMembers = function () {
-        $http.post($rootScope.baseURL + '/mail/all', {
+        $http.post($cookieStore.get('baseURL') + '/mail/all', {
             subject: $('#subject').val(),
             text: $('#text').val(),
-            key: $rootScope.key
+            key: $cookieStore.get('session')
         }).
         success(function (data, status, headers, config) {
             if (data.error) {

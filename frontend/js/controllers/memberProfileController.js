@@ -1,6 +1,6 @@
-acmApp.controller('memberProfileCtrl', function ($scope, $routeParams, $http, $rootScope, $location) {
+acmApp.controller('memberProfileCtrl', function ($scope, $routeParams, $http, $location, $cookieStore) {
 
-    if ($rootScope.key == '' || typeof $rootScope.key == 'undefined') {
+    if ($cookieStore.get('session') == '' || typeof $cookieStore.get('session') == 'undefined') {
         $location.path("/login");
     }
 
@@ -10,9 +10,9 @@ acmApp.controller('memberProfileCtrl', function ($scope, $routeParams, $http, $r
 
     $scope.blazer_id = $routeParams.blazerId;
 
-    $http.get($rootScope.baseURL + '/members/' + $scope.blazer_id, {
+    $http.get($cookieStore.get('baseURL') + '/members/' + $scope.blazer_id, {
         params: {
-            'key': $rootScope.key
+            'key': $cookieStore.get('session')
         }
     }).
     success(function (data, status, headers, config) {
@@ -20,25 +20,25 @@ acmApp.controller('memberProfileCtrl', function ($scope, $routeParams, $http, $r
     });
 
     $scope.removeMember = function () {
-        $http.delete($rootScope.baseURL + '/members/' + $scope.blazer_id, {
+        $http.delete($cookieStore.get('baseURL') + '/members/' + $scope.blazer_id, {
             params: {
-                'key': $rootScope.key
+                'key': $cookieStore.get('session')
             }
         });
         $location.path("/members");
     };
 
     $scope.updateMember = function () {
-        $scope.member.key = $rootScope.key;
-        $http.put($rootScope.baseURL + '/members/' + $scope.member.blazerid, $scope.member);
+        $scope.member.key = $cookieStore.get('session');
+        $http.put($cookieStore.get('baseURL') + '/members/' + $scope.member.blazerid, $scope.member);
     };
 
     $scope.emailMember = function () {
-        $http.post($rootScope.baseURL + '/mail', {
+        $http.post($cookieStore.get('baseURL') + '/mail', {
             to: $scope.member.email,
             subject: $('#subject').val(),
             text: $('#text').val(),
-            key: $rootScope.key
+            key: $cookieStore.get('session')
         }).
         success(function (data, status, headers, config) {
             if (data.error) {

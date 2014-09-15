@@ -1,4 +1,4 @@
-var acmApp = angular.module('acmApp', ['ngRoute']);
+var acmApp = angular.module('acmApp', ['ngRoute', 'ngCookies']);
 
 acmApp.config(function ($routeProvider) {
     $routeProvider

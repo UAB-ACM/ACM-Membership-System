@@ -44,7 +44,8 @@ app.checkKey = function (key, res, callback) {
                 callback();
             } else {
                 res.send({
-                    error: "Invalid key."
+                    error: "Invalid key.",
+                    code: 1
                 });
             }
         });
