@@ -1,15 +1,15 @@
-acmApp.controller('settingsCtrl', function ($scope, $http, $location, $cookieStore) {
+acmApp.controller('settingsCtrl', function ($scope, $http, $location) {
 
-    if ($cookieStore.get('session') == '' || typeof $cookieStore.get('session') == 'undefined') {
+    if (localStorage.getItem('session') == '' || typeof localStorage.getItem('session') == 'undefined') {
         $location.path("/login");
     }
 
     $scope.changePassword = function () {
         if ($scope.new == $scope.confirm) {
-            $http.post($cookieStore.get('baseURL') + '/change', {
+            $http.post(localStorage.getItem('baseURL') + '/change', {
                 'old': $scope.old,
                 'new': $scope.new,
-                'key': $cookieStore.get('session')
+                'key': localStorage.getItem('session')
             });
         }
     };

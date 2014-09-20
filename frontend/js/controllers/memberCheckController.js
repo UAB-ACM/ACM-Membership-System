@@ -1,15 +1,15 @@
-acmApp.controller('checkCtrl', function ($scope, $http, $location, $cookieStore, $rootScope) {
+acmApp.controller('checkCtrl', function ($scope, $http, $location, $rootScope) {
 
 
     $http.get('./config.json')
         .success(function (data, status, headers, config) {
-            $cookieStore.put('baseURL', data.server + ':' + data.port);
-            $cookieStore.put('logo', data.clubLogo);
-            $cookieStore.put('join', data.joinLink);
-            $rootScope.logo = $cookieStore.get('logo');
-            $rootScope.join = $cookieStore.get('join');
+            localStorage.setItem('baseURL', data.server + ':' + data.port);
+            localStorage.setItem('logo', data.clubLogo);
+            localStorage.setItem('join', data.joinLink);
+            $rootScope.logo = localStorage.getItem('logo');
+            $rootScope.join = localStorage.getItem('join');
 
-            $http.get($cookieStore.get('baseURL') + '/members').success(function (data, status, headers, config) {
+            $http.get(localStorage.getItem('baseURL') + '/members').success(function (data, status, headers, config) {
                 members = data.map(function (item) {
                     return item.blazerid
                 });
@@ -28,7 +28,7 @@ acmApp.controller('checkCtrl', function ($scope, $http, $location, $cookieStore,
 
             $scope.member;
 
-            $http.get($cookieStore.get('baseURL') + '/members/' + blazerId).
+            $http.get(localStorage.getItem('baseURL') + '/members/' + blazerId).
             success(function (data, status, headers, config) {
                 $scope.member = data;
             });

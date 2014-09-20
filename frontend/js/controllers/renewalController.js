@@ -1,6 +1,6 @@
-acmApp.controller('renewalCtrl', function ($scope, $http, $location, $cookieStore) {
+acmApp.controller('renewalCtrl', function ($scope, $http, $location) {
 
-    if ($cookieStore.get('session') == '' || typeof $cookieStore.get('session') == 'undefined') {
+    if (localStorage.getItem('session') == '' || typeof localStorage.getItem('session') == 'undefined') {
         $location.path("/login");
     }
 
@@ -8,9 +8,9 @@ acmApp.controller('renewalCtrl', function ($scope, $http, $location, $cookieStor
     var emails;
 
     $scope.getMembers = function () {
-        $http.post($cookieStore.get('baseURL') + '/expired', {
+        $http.post(localStorage.getItem('baseURL') + '/expired', {
             renewal: $scope.renewal,
-            key: $cookieStore.get('session')
+            key: localStorage.getItem('session')
         }).
         success(function (data, status, headers, config) {
             $scope.members = data;
@@ -21,19 +21,19 @@ acmApp.controller('renewalCtrl', function ($scope, $http, $location, $cookieStor
     };
 
     $scope.emailMembers = function () {
-        $http.post($cookieStore.get('baseURL') + '/mail', {
+        $http.post(localStorage.getItem('baseURL') + '/mail', {
             to: emails,
             subject: $('#subject').val(),
             text: $('#text').val(),
-            key: $cookieStore.get('session')
+            key: localStorage.getItem('session')
         });
     };
 
     $scope.removeMembers = function () {
-        $http.delete($cookieStore.get('baseURL') + '/expired', {
+        $http.delete(localStorage.getItem('baseURL') + '/expired', {
             params: {
                 'renewal': $scope.renewal,
-                'key': $cookieStore.get('session')
+                'key': localStorage.getItem('session')
             }
         });
     };
