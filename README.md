@@ -18,8 +18,9 @@ npm install
 bower install
 ```
 
-Start Mongo DB
+Install and start Mongo DB
 ```
+apt-get install mongodb
 mongod
 ```
 
