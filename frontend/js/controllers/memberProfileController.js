@@ -1,6 +1,6 @@
-acmApp.controller('memberProfileCtrl', function ($scope, $routeParams, $http, $location, $cookieStore) {
+acmApp.controller('memberProfileCtrl', function ($scope, $routeParams, $http, $location) {
 
-    if ($cookieStore.get('session') == '' || typeof $cookieStore.get('session') == 'undefined') {
+    if (localStorage.getItem('session') == '' || typeof localStorage.getItem('session') == 'undefined') {
         $location.path("/login");
     }
 
@@ -10,9 +10,9 @@ acmApp.controller('memberProfileCtrl', function ($scope, $routeParams, $http, $l
 
     $scope.blazer_id = $routeParams.blazerId;
 
-    $http.get($cookieStore.get('baseURL') + '/members/' + $scope.blazer_id, {
+    $http.get(localStorage.getItem('baseURL') + '/members/' + $scope.blazer_id, {
         params: {
-            'key': $cookieStore.get('session')
+            'key': localStorage.getItem('session')
         }
     }).
     success(function (data, status, headers, config) {
@@ -20,25 +20,25 @@ acmApp.controller('memberProfileCtrl', function ($scope, $routeParams, $http, $l
     });
 
     $scope.removeMember = function () {
-        $http.delete($cookieStore.get('baseURL') + '/members/' + $scope.blazer_id, {
+        $http.delete(localStorage.getItem('baseURL') + '/members/' + $scope.blazer_id, {
             params: {
-                'key': $cookieStore.get('session')
+                'key': localStorage.getItem('session')
             }
         });
         $location.path("/members");
     };
 
     $scope.updateMember = function () {
-        $scope.member.key = $cookieStore.get('session');
-        $http.put($cookieStore.get('baseURL') + '/members/' + $scope.member.blazerid, $scope.member);
+        $scope.member.key = localStorage.getItem('session');
+        $http.put(localStorage.getItem('baseURL') + '/members/' + $scope.member.blazerid, $scope.member);
     };
 
     $scope.emailMember = function () {
-        $http.post($cookieStore.get('baseURL') + '/mail', {
+        $http.post(localStorage.getItem('baseURL') + '/mail', {
             to: $scope.member.email,
             subject: $('#subject').val(),
             text: $('#text').val(),
-            key: $cookieStore.get('session')
+            key: localStorage.getItem('session')
         }).
         success(function (data, status, headers, config) {
             if (data.error) {

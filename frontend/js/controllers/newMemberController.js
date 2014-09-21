@@ -1,13 +1,13 @@
-acmApp.controller('newMemberCtrl', function ($scope, $http, $location, $cookieStore) {
+acmApp.controller('newMemberCtrl', function ($scope, $http, $location) {
 
-    if ($cookieStore.get('session') == '' || typeof $cookieStore.get('session') == 'undefined') {
+    if (localStorage.getItem('session') == '' || typeof localStorage.getItem('session') == 'undefined') {
         $location.path("/login");
     }
 
     $scope.addMember = function () {
 
-        $scope.member.key = $cookieStore.get('session');
-        $http.post($cookieStore.get('baseURL') + '/members', $scope.member);
+        $scope.member.key = localStorage.getItem('session');
+        $http.post(localStorage.getItem('baseURL') + '/members', $scope.member);
         $location.path("/members");
     };
 });

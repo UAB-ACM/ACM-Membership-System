@@ -1,18 +1,18 @@
-acmApp.controller('loginCtrl', function ($scope, $http, $location, $cookieStore, $rootScope) {
+acmApp.controller('loginCtrl', function ($scope, $http, $location, $rootScope) {
 
 
     $http.get('./config.json').
     success(function (data, status, headers, config) {
-        $cookieStore.put('baseURL', data.server + ':' + data.port);
-        $cookieStore.put('logo', data.clubLogo);
-        $rootScope.logo = $cookieStore.get('logo');
+        localStorage.setItem('baseURL', data.server + ':' + data.port);
+        localStorage.setItem('logo', data.clubLogo);
+        $rootScope.logo = localStorage.getItem('logo');
     }).
     error(function (data, status, headers, config) {
         console.log('There was an error connecting to the server');
     });
 
     $scope.login = function () {
-        $http.post($cookieStore.get('baseURL') + '/login', {
+        $http.post(localStorage.getItem('baseURL') + '/login', {
             password: $('#password').val()
         }).
         success(function (data, status, headers, config) {
@@ -22,7 +22,7 @@ acmApp.controller('loginCtrl', function ($scope, $http, $location, $cookieStore,
                 $("#loginContainer").addClass("has-error");
                 shakeForm();
             } else if (data != '' && typeof data != 'undefined') {
-                $cookieStore.put('session', data);
+                localStorage.setItem('session', data);
                 $location.path("/members");
             }
         }).
