@@ -28,3 +28,8 @@ Start the server
 ```
 node backend/app.js
 ```
+
+Generate docs
+```
+grunt ngdocs
+```
