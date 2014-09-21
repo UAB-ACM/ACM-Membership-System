@@ -99,4 +99,5 @@ module.exports = function (grunt) {
 
     grunt.registerTask('default', ['ngdocs', 'ngAnnotate', 'concat', 'uglify']);
     grunt.registerTask('backend', ['shell:mongo', 'forever:backend']);
+    grunt.registerTask('restart', ['forever:backend:restart']);
 }
