@@ -4,4 +4,4 @@ backend/config.json
 node_modules/*
 mongodb/*
 frontend/grunt_example
-
+docs/*
