@@ -16,6 +16,8 @@ angular.module('acmApp').controller('checkCtrl', function ($scope, $http, $locat
             localStorage.setItem('baseURL', data.server + ':' + data.port);
             localStorage.setItem('logo', data.clubLogo);
             localStorage.setItem('join', data.joinLink);
+            localStorage.setItem('clubName', data.clubName);
+            $rootScope.clubName = localStorage.getItem('clubName');
             $rootScope.logo = localStorage.getItem('logo');
             $rootScope.join = localStorage.getItem('join');
 

@@ -15,6 +15,8 @@ angular.module('acmApp').controller('loginCtrl', function ($scope, $http, $locat
     success(function (data, status, headers, config) {
         localStorage.setItem('baseURL', data.server + ':' + data.port);
         localStorage.setItem('logo', data.clubLogo);
+        localStorage.setItem('clubName', data.clubName);
+        $rootScope.clubName = localStorage.getItem('clubName');
         $rootScope.logo = localStorage.getItem('logo');
     }).
     error(function (data, status, headers, config) {
