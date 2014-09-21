@@ -12,7 +12,7 @@ angular.module('acmApp').controller('membersCtrl', function ($scope, $http, $loc
     if (!localStorage.getItem('session')) {
         $location.path("/login");
     }
-
+    
     $http.get(localStorage.getItem('baseURL') + '/members').
     success(function (data, status, headers, config) {
         $scope.members = data;
