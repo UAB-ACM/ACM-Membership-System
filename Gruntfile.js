@@ -3,6 +3,12 @@ module.exports = function (grunt) {
 
         pkg: grunt.file.readJSON('package.json'),
 
+        clean: [
+            "docs/",
+            "frontend/js/build/",
+            "annotate/"
+        ],
+
         ngdocs: {
             options: {
                 dest: 'docs',
@@ -26,7 +32,7 @@ module.exports = function (grunt) {
                             "frontend/js/components/*.js",
                             "frontend/js/directives/*.js"
                         ],
-                        rename: function(dest, src) {
+                        rename: function (dest, src) {
                             return 'annotate/' + src;
                         }
                     },
@@ -66,6 +72,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-ng-annotate');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-clean');
 
     grunt.registerTask('default', ['ngdocs', 'ngAnnotate', 'concat', 'uglify']);
 }

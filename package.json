@@ -31,6 +31,7 @@
         "grunt-ng-annotate": "latest",
         "grunt-contrib-concat": "latest",
         "grunt-contrib-uglify": "latest",
+        "grunt-contrib-clean": "latest",
         "grunt-ngdocs": "latest",
         "mongodb": "latest"
     }
