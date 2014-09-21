@@ -9,7 +9,7 @@
  */
 angular.module('acmApp').controller('renewalCtrl', function ($scope, $http, $location) {
 
-    if (localStorage.getItem('session') == '' || typeof localStorage.getItem('session') == 'undefined') {
+    if (!localStorage.getItem('session')) {
         $location.path("/login");
     }
 

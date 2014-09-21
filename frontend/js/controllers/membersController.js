@@ -9,9 +9,8 @@
  */
 angular.module('acmApp').controller('membersCtrl', function ($scope, $http, $location) {
 
-    if (localStorage.getItem('session') == '' || typeof localStorage.getItem('session') == 'undefined') {
+    if (!localStorage.getItem('session')) {
         $location.path("/login");
-        console.log("damn");
     }
 
     $http.get(localStorage.getItem('baseURL') + '/members').
