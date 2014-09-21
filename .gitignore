@@ -2,3 +2,6 @@ frontend/bower_components/*
 frontend/config.json
 backend/config.json
 node_modules/*
+mongodb/*
+frontend/grunt_example
+
