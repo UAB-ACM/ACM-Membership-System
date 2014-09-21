@@ -1,5 +1,20 @@
 <input ng-model="searchText" class="navbar search-bar" placeholder="Search by name or blazer id"></input>
 
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3 col-sm-4 col-xs-6"  ng-repeat="member in members | filter:searchText | orderBy:'name'">
+        <a href='#members/{{member.blazerid}}' class="thumbnail">
+            {{member.name}}
+            <img gravatar-src="'{{member.email}}'" class="img-responsive">
+            {{member.blazerid}}
+        </a>
+    </div>
+  </div>
+</div>
+
+
+<!--
 <div class="container center-block">
     <div class="text-center">
         <div class="row" ng-repeat="member in members | filter:searchText | orderBy:'name'">
@@ -10,3 +25,4 @@
         </div>
     </div>
 </div>
+-->
