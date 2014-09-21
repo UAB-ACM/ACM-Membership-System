@@ -22,7 +22,7 @@
         "nodemailer": "latest",
         "cors": "latest",
         "bower": ">=1.3.10",
-        "md5": "latest",
+        "MD5": "latest",
         "mongodb": "latest"
     }
 }
