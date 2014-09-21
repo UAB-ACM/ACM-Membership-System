@@ -1,3 +1,4 @@
+
 /**
  * @ngdoc object
  * @name acmApp
@@ -5,7 +6,7 @@
  * @description
  * The acmApp is the app which controls everything...
  */
-var acmApp = angular.module('acmApp', ['ngRoute']);
+var acmApp = angular.module('acmApp', ['ngRoute','ui.gravatar']);
 
 acmApp.config(function ($routeProvider) {
     $routeProvider

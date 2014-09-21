@@ -6,6 +6,7 @@
         "angular": "latest",
         "angular-route": "latest",
          "grunt": "latest",
+        "angular-gravatar":"latest",
         "bootstrap": "latest"
     }
 }
