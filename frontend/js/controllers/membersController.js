@@ -7,7 +7,7 @@
  * @description
  * This controller is used to control the members list page
  */
-acmApp.controller('membersCtrl', function ($scope, $http, $location) {
+angular.module('acmApp').controller('membersCtrl', function ($scope, $http, $location) {
 
     if (localStorage.getItem('session') == '' || typeof localStorage.getItem('session') == 'undefined') {
         $location.path("/login");

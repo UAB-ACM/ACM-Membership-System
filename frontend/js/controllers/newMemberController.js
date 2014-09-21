@@ -7,7 +7,7 @@
  * @description
  * This controller is used to control the new member form
  */
-acmApp.controller('newMemberCtrl', function ($scope, $http, $location) {
+angular.module('acmApp').controller('newMemberCtrl', function ($scope, $http, $location) {
 
     if (localStorage.getItem('session') == '' || typeof localStorage.getItem('session') == 'undefined') {
         $location.path("/login");

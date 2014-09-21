@@ -7,7 +7,7 @@
  * @description
  * This controller is used to control the member renewals page
  */
-acmApp.controller('renewalCtrl', function ($scope, $http, $location) {
+angular.module('acmApp').controller('renewalCtrl', function ($scope, $http, $location) {
 
     if (localStorage.getItem('session') == '' || typeof localStorage.getItem('session') == 'undefined') {
         $location.path("/login");
