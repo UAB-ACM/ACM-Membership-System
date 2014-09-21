@@ -1,3 +1,11 @@
+/** 
+* @ngdoc object
+* @name app.js 
+* @description 
+* - module declaration 
+* - namespace and dependencies managment  
+*/
+
 var acmApp = angular.module('acmApp', ['ngRoute']);
 
 acmApp.config(function ($routeProvider) {

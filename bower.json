@@ -5,6 +5,7 @@
         "jquery": "latest",
         "angular": "latest",
         "angular-route": "latest",
+         "grunt": "latest",
         "bootstrap": "latest"
     }
 }
