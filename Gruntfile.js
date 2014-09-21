@@ -1,6 +1,8 @@
 module.exports = function (grunt) {
-    // Do grunt-related things in here
     grunt.initConfig({
+
+        pkg: grunt.file.readJSON('package.json'),
+
         ngdocs: {
             options: {
                 dest: 'docs',
@@ -10,10 +12,64 @@ module.exports = function (grunt) {
                 src: ['frontend/js/**/*.js'],
                 title: 'Documentation'
             }
+        },
+
+        ngAnnotate: {
+            acmApp: {
+                files: [
+                    {
+                        expand: true,
+                        src: [
+                            "frontend/js/app.js",
+                            "frontend/js/router.js",
+                            "frontend/js/controllers/*.js",
+                            "frontend/js/components/*.js",
+                            "frontend/js/directives/*.js"
+                        ],
+                        rename: function(dest, src) {
+                            return 'annotate/' + src;
+                        }
+                    },
+                ],
+            },
+        },
+
+
+        concat: {
+            options: {
+                mangle: false
+            },
+            dist: {
+                src: [
+
+                    "frontend/bower_components/jquery/dist/jquery.min.js",
+                    "frontend/bower_components/bootstrap/dist/js/bootstrap.min.js",
+                    "frontend/bower_components/angular/angular.min.js",
+                    "frontend/bower_components/angular-route/angular-route.min.js",
+                    "frontend/bower_components/angular-gravatar/build/md5.min.js",
+                    "frontend/bower_components/angular-gravatar/build/angular-gravatar.min.js",
+                    "annotate/frontend/js/app.js",
+                    "annotate/frontend/js/router.js",
+                    "annotate/frontend/js/controllers/*.js",
+                    "annotate/frontend/js/components/*.js",
+                    "annotate/frontend/js/directives/*.js"
+                ],
+                dest: 'frontend/js/build/production.js',
+            }
+        },
+
+        uglify: {
+            build: {
+                src: 'frontend/js/build/production.js',
+                dest: 'frontend/js/build/production.min.js'
+            }
         }
     });
+
     grunt.loadNpmTasks('grunt-ngdocs');
-    grunt.registerTask('default', ['ngdocs']);
+    grunt.loadNpmTasks('grunt-ng-annotate');
+    grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
 
-
+    grunt.registerTask('default', ['ngdocs', 'ngAnnotate', 'concat', 'uglify']);
 }
