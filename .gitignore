@@ -6,3 +6,5 @@ mongodb/*
 frontend/grunt_example
 docs/*
 mongodb.backup/*
+annotate/*
+frontend/js/build/*
