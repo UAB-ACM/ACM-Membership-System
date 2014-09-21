@@ -48,11 +48,7 @@ module.exports = function (grunt) {
                     "frontend/bower_components/angular-route/angular-route.min.js",
                     "frontend/bower_components/angular-gravatar/build/md5.min.js",
                     "frontend/bower_components/angular-gravatar/build/angular-gravatar.min.js",
-                    "annotate/frontend/js/app.js",
-                    "annotate/frontend/js/router.js",
-                    "annotate/frontend/js/controllers/*.js",
-                    "annotate/frontend/js/components/*.js",
-                    "annotate/frontend/js/directives/*.js"
+                    "annotate/frontend/js/**/*.js"
                 ],
                 dest: 'frontend/js/build/production.js',
             }
