@@ -1,4 +1,5 @@
 module.exports = function (grunt) {
+
     grunt.initConfig({
 
         pkg: grunt.file.readJSON('package.json'),
@@ -6,8 +7,29 @@ module.exports = function (grunt) {
         clean: [
             "docs/",
             "frontend/js/build/",
-            "annotate/"
+            "annotate/",
+            "forever/"
         ],
+
+        shell: {
+            mongo: {
+                command: 'mongod',
+                options: {
+                    async: true,
+                    execOptions: {
+                        detached: true
+                    }
+                }
+            },
+        },
+
+        forever: {
+            backend: {
+                options: {
+                    index: 'backend/app.js',
+                }
+            }
+        },
 
         ngdocs: {
             options: {
@@ -47,7 +69,6 @@ module.exports = function (grunt) {
             },
             dist: {
                 src: [
-
                     "frontend/bower_components/jquery/dist/jquery.min.js",
                     "frontend/bower_components/bootstrap/dist/js/bootstrap.min.js",
                     "frontend/bower_components/angular/angular.min.js",
@@ -73,6 +94,9 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-shell-spawn');
+    grunt.loadNpmTasks('grunt-forever');
 
     grunt.registerTask('default', ['ngdocs', 'ngAnnotate', 'concat', 'uglify']);
+    grunt.registerTask('backend', ['shell:mongo', 'forever:backend']);
 }

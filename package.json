@@ -32,6 +32,8 @@
         "grunt-contrib-concat": "latest",
         "grunt-contrib-uglify": "latest",
         "grunt-contrib-clean": "latest",
+        "grunt-shell-spawn": "latest",
+        "grunt-forever": "latest",
         "grunt-ngdocs": "latest",
         "mongodb": "latest"
     }

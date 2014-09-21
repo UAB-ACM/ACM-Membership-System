@@ -8,3 +8,4 @@ docs/*
 mongodb.backup/*
 annotate/*
 frontend/js/build/*
+forever/*
