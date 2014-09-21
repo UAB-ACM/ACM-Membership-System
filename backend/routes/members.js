@@ -44,7 +44,8 @@ module.exports = function (app, db, config) {
         db.collection('members', function (err, collection) {
             collection.find({}, {
                 blazerid: 1,
-                name: 1
+                name: 1,
+                email: 1
             }).toArray(function (err, items) {
                 res.send(items);
             });
