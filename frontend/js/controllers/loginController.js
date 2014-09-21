@@ -8,7 +8,7 @@
  * @description
  * This controller is used to log the user in to the admin area.
  */
-acmApp.controller('loginCtrl', function ($scope, $http, $location, $rootScope) {
+angular.module('acmApp').controller('loginCtrl', function ($scope, $http, $location, $rootScope) {
 
 
     $http.get('./config.json').

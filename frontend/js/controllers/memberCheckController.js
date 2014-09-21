@@ -8,7 +8,7 @@
  * @description
  * This controller is allows users to check if they are a member from the member check page
  */
-acmApp.controller('checkCtrl', function ($scope, $http, $location, $rootScope) {
+angular.module('acmApp').controller('checkCtrl', function ($scope, $http, $location, $rootScope) {
 
 
     $http.get('./config.json')

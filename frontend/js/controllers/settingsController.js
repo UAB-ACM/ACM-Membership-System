@@ -7,7 +7,7 @@
  * @description
  * This controller is used to control settings page
  */
-acmApp.controller('settingsCtrl', function ($scope, $http, $location) {
+angular.module('acmApp').controller('settingsCtrl', function ($scope, $http, $location) {
 
     if (localStorage.getItem('session') == '' || typeof localStorage.getItem('session') == 'undefined') {
         $location.path("/login");

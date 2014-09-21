@@ -8,7 +8,7 @@
  * @description
  * This controller is used to control member profile pages
  */
-acmApp.controller('memberProfileCtrl', function ($scope, $routeParams, $http, $location) {
+angular.module('acmApp').controller('memberProfileCtrl', function ($scope, $routeParams, $http, $location) {
 
     if (localStorage.getItem('session') == '' || typeof localStorage.getItem('session') == 'undefined') {
         $location.path("/login");

@@ -7,7 +7,7 @@
  * @description
  * This controller is used email all users.
  */
-acmApp.controller('emailCtrl', function ($scope, $http, $location) {
+angular.module('acmApp').controller('emailCtrl', function ($scope, $http, $location) {
 
     if (localStorage.getItem('session') == '' || typeof localStorage.getItem('session') == 'undefined') {
         $location.path("/login");
