@@ -1,3 +1,13 @@
+/**
+ * @ngdoc controller
+ * @name acmApp.controller:loginController
+ * @requires $scope
+ * @requires $http
+ * @requires $location
+ * @requires $rootScope
+ * @description
+ * This controller is used to log the user in to the admin area.
+ */
 acmApp.controller('loginCtrl', function ($scope, $http, $location, $rootScope) {
 
 
@@ -11,6 +21,13 @@ acmApp.controller('loginCtrl', function ($scope, $http, $location, $rootScope) {
         console.log('There was an error connecting to the server');
     });
 
+    /**
+     * @ngdoc method
+     * @name acmApp.controller:loginController#login
+     * @methodOf acmApp.controller:loginController
+     * @description
+     * Reads in the password from the password input field and logs the user into the admin area
+     */
     $scope.login = function () {
         $http.post(localStorage.getItem('baseURL') + '/login', {
             password: $('#password').val()
@@ -33,6 +50,13 @@ acmApp.controller('loginCtrl', function ($scope, $http, $location, $rootScope) {
         });
     };
 
+    /**
+     * @ngdoc method
+     * @name acmApp.controller:loginController#shakeForm
+     * @methodOf acmApp.controller:loginController
+     * @description
+     * Shakes the login form if the login attempt fails
+     */
     function shakeForm() {
         var len = 20;
         for (var i = 0; i < 6; i++)

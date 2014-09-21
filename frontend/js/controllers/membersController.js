@@ -1,3 +1,12 @@
+/**
+ * @ngdoc controller
+ * @name acmApp.controller:membersController
+ * @requires $scope
+ * @requires $http
+ * @requires $location
+ * @description
+ * This controller is used to control the members list page
+ */
 acmApp.controller('membersCtrl', function ($scope, $http, $location) {
 
     if (localStorage.getItem('session') == '' || typeof localStorage.getItem('session') == 'undefined') {

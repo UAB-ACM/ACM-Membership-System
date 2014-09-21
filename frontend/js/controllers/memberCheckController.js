@@ -1,3 +1,13 @@
+/**
+ * @ngdoc controller
+ * @name acmApp.controller:memberCheckController
+ * @requires $scope
+ * @requires $http
+ * @requires $location
+ * @requires $rootScope
+ * @description
+ * This controller is allows users to check if they are a member from the member check page
+ */
 acmApp.controller('checkCtrl', function ($scope, $http, $location, $rootScope) {
 
 
@@ -19,6 +29,13 @@ acmApp.controller('checkCtrl', function ($scope, $http, $location, $rootScope) {
             console.log('There was an error connecting to the server');
         });
 
+    /**
+     * @ngdoc method
+     * @name acmApp.controller:memberCheckController#isMember
+     * @methodOf acmApp.controller:memberCheckController
+     * @description
+     * Reads in the blazer ID from the username input field and checks if the blazer ID is associated with a member
+     */
     $scope.isMember = function () {
         var blazerId = document.getElementById('blazerId').value;
 
