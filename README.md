@@ -18,23 +18,20 @@ npm install
 bower install
 ```
 
-Install and start Mongo DB
+Install Mongo DB
 ```
 apt-get install mongodb
-mongod
+```
+
+Generate docs, annotate angular files, concatenate js files, and minify js files.
+```
+grunt
 ```
 
 Start the server
 ```
-node backend/app.js
+grunt backend
 ```
-
-Run grunt tasks
-```
-grunt
-```
-This will generate docs, annotate angular files, concatenate js files, and minify js files.
-
 
 You can also clean your environment this task
 ```
