@@ -28,9 +28,14 @@ Generate docs, annotate angular files, concatenate js files, and minify js files
 grunt
 ```
 
-Start the server
+Start mongo and the server
 ```
 grunt backend
+```
+
+Restart the server
+```
+grunt restart
 ```
 
 You can also clean your environment this task
