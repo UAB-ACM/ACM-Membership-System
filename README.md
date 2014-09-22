@@ -34,3 +34,10 @@ Run grunt tasks
 grunt
 ```
 This will generate docs, annotate angular files, concatenate js files, and minify js files.
+
+
+You can also clean your environment this task
+```
+grunt clean
+```
+deletes annotated files, build files, and generated docs
