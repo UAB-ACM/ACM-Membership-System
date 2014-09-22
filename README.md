@@ -29,7 +29,8 @@ Start the server
 node backend/app.js
 ```
 
-Generate docs
+Run grunt tasks
 ```
-grunt ngdocs
+grunt
 ```
+This will generate docs, annotate angular files, concatenate js files, and minify js files.
