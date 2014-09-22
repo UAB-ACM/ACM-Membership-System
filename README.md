@@ -11,16 +11,15 @@ cp backend/config.example backend/config.json
 
 Edit `frontend/config.json` and `backend/config.json`
 
+Install Mongo DB
+```
+apt-get install node mongodb
+```
 
 Install dependencies
 ```
 npm install
 bower install
-```
-
-Install Mongo DB
-```
-apt-get install mongodb
 ```
 
 Generate docs, annotate angular files, concatenate js files, and minify js files.
