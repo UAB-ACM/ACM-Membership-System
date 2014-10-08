@@ -10,6 +10,27 @@ cp backend/config.example backend/config.json
 ```
 
 Edit `frontend/config.json` and `backend/config.json`
+`frontend/config.json`
+```
+{
+    "server": "SERVER_ADDRESS",
+    "port": PORT_NUMBER,
+    "clubLogo": "CLUB_IMAGE",
+    "joinLink": "LINK_TO_JOIN"
+}
+```
+`backend/config.json`
+```
+{
+    "password": "LOGIN_PASSWORD",
+    "email": "GMAIL_USERNAME",
+    "emailpass": "GMAIL_PASSWORD",
+    "port": PORT_TO_LISTEN,
+    "mongo_server": "MONGO_SERVER",
+    "mongo_port": MONGO_PORT
+}
+```
+
 
 Install Mongo DB
 ```
